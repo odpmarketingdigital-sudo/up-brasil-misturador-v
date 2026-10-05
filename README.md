@@ -63,6 +63,8 @@ lib/
   utm.ts              # captura/persistência de UTMs em sessionStorage
   whatsapp.ts         # URL wa.me (usada apenas após o envio do formulário)
   tracking.ts         # dataLayer: lead_modal_open/lead_submit/whatsapp_redirect
+components/
+  google-tag-manager.tsx  # snippet do GTM (GTM-5K252BPM) + <noscript> de fallback
 public/images/        # logotipo-1.webp, misturador321__1_.webp, mist2__1_.webp, painel__1_.webp
 ```
 
@@ -71,8 +73,11 @@ public/images/        # logotipo-1.webp, misturador321__1_.webp, mist2__1_.webp,
 - Eventos no `dataLayer`: `lead_modal_open {origem}`, `lead_submit {origem}`
   e `whatsapp_redirect {origem}` — todos em `lib/tracking.ts`.
 - `lead_submit` também chama `fbq("track", "Lead")` quando o pixel existe
-  (verificação de `window.fbq`); nenhum ID foi instalado ainda.
-- Para ativar: injete o snippet do GTM/Meta Pixel em `app/layout.tsx`.
+  (verificação de `window.fbq`); nenhum ID do Meta Pixel foi instalado ainda.
+- **Google Tag Manager `GTM-5K252BPM` está instalado** em
+  `components/google-tag-manager.tsx`, montado em `app/layout.tsx` (snippet no
+  topo do `<body>` + `<noscript>` de fallback). O snippet cria o `dataLayer`,
+  então os eventos acima já chegam ao container.
 
 ## Testando o fluxo localmente
 

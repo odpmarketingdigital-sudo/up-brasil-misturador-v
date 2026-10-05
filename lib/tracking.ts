@@ -1,11 +1,9 @@
 /**
  * Camada de tracking preparada para Meta Pixel e Google Tag Manager.
  *
- * Nenhum ID foi instalado ainda. Quando os IDs forem adicionados:
- *  1. Meta Pixel: carregar o snippet do Facebook em app/layout.tsx; os
- *     eventos abaixo já chamam window.fbq com verificação de existência.
- *  2. GTM: injetar o snippet do dataLayer em app/layout.tsx; o dataLayer já
- *     é empurrado aqui com o payload padrão.
+ * O dataLayer é inicializado pelo snippet do Google Tag Manager (GTM-5K252BPM)
+ * em components/google-tag-manager.tsx; os eventos abaixo apenas empurram
+ * objetos para ele.
  *
  * Eventos do funil do modal de lead:
  *  - lead_modal_open { origem }

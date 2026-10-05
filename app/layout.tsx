@@ -2,6 +2,10 @@ import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import { site, price, techSpecs } from "@/content/landing";
 import { LeadModalProvider } from "@/components/lead-modal";
+import {
+  GoogleTagManager,
+  GoogleTagManagerNoScript,
+} from "@/components/google-tag-manager";
 import "./globals.css";
 
 const inter = Inter({
@@ -99,6 +103,9 @@ export default function RootLayout({
   return (
     <html lang="pt-BR" className={inter.variable}>
       <body className="font-sans">
+        <GoogleTagManager />
+        <GoogleTagManagerNoScript />
+
         <a
           href="#conteudo"
           className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-lg focus:bg-brand focus:px-4 focus:py-2 focus:text-sm focus:font-bold focus:text-graphite-dark"
