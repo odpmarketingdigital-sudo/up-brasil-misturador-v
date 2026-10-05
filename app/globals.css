@@ -1,0 +1,71 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5.5rem; /* compensa o header fixo nas âncoras */
+  }
+
+  body {
+    @apply bg-white text-graphite antialiased;
+  }
+
+  /* Foco visível acessível (contraste AA) em todos os elementos interativos */
+  :focus-visible {
+    @apply outline-none ring-2 ring-graphite ring-offset-2 ring-offset-white;
+  }
+
+  .section-dark :focus-visible {
+    @apply ring-brand ring-offset-graphite;
+  }
+}
+
+@layer components {
+  .container-px {
+    @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl px-6 py-3.5 text-sm font-semibold transition-all duration-200 focus-visible:ring-2 focus-visible:ring-offset-2;
+  }
+
+  .btn-primary {
+    @apply btn bg-brand text-graphite-dark shadow-soft hover:bg-brand-light active:scale-[0.98];
+  }
+
+  .btn-secondary {
+    @apply btn border border-graphite/20 bg-white text-graphite hover:border-graphite/40 hover:bg-graphite/[0.03];
+  }
+
+  .btn-dark {
+    @apply btn bg-graphite text-white hover:bg-graphite-light active:scale-[0.98];
+  }
+
+  .card {
+    @apply rounded-2xl border border-graphite/10 bg-white shadow-soft;
+  }
+
+  .eyebrow {
+    @apply text-xs font-bold uppercase tracking-[0.16em] text-brand-dark;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
